@@ -43,7 +43,7 @@ It also includes a PoC implementation for Dumbo-2 (Guo et al. CCS'2020)
    ./run_local_network_test.sh 4 1 1000 20
    ```
    
-   To replace run BDT instead of Dumbo-2, edit line-12 in run_local_network_test.sh to replace "dumbo" by "bdt" or "rbc-bdt" before executing the shell script.
+   To run BDT variants instead of Dumbo-2, edit line-12 in run_local_network_test.sh to replace "dumbo" by "bdt" or "rbc-bdt" before executing the shell script.
 
 3. If you would like to test the code among AWS cloud servers. Please use our provided aws_ip_tool.py to generate new hoest.config to reflect your AWS IP addresses; then you can follow the commands inside run_local_network_test.sh to remotely start the protocols at all servers.
 
