@@ -47,7 +47,7 @@ It also includes a PoC implementation for Dumbo-2 (Guo et al. CCS'2020)
 
 3. If you would like to test the code among AWS cloud servers. Please use our provided aws_ip_tool.py to generate new hoest.config to reflect your AWS IP addresses; then you can follow the commands inside run_local_network_test.sh to remotely start the protocols at all servers.
 
-Here down below is the original REAMME.md of HoneyBadgerBFT
+Here down below is the original README.md of HoneyBadgerBFT
 
 # HoneyBadgerBFT
 The Honey Badger of BFT Protocols.
