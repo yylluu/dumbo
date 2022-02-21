@@ -47,7 +47,8 @@ It also includes a PoC implementation for Dumbo-2 (Guo et al. CCS'2020)
 
 3. If you would like to test the code among AWS cloud servers (with Ubuntu 18.84 LTS). You can follow the commands inside run_local_network_test.sh to remotely start the protocols at all servers. An example to conduct the WAN tests from your PC side terminal can be:
    ```
-   N = 64
+   # the number of remove AWS servers
+   N = 4
    
    # public IPs --- This is the public IPs of AWS servers
     pubIPsVar=([0]='3.236.98.149'
@@ -61,13 +62,13 @@ It also includes a PoC implementation for Dumbo-2 (Guo et al. CCS'2020)
     [2]='172.31.6.250'
     [3]='172.31.2.176')
    
-   # Clone code to all remote servers from github
+   # Clone code to all remote AWS servers from github
     i=0; while [ $i -le $(( N-1 )) ]; do
     ssh -i "/home/your-name/your-key-dir/your-sk.pem" -o StrictHostKeyChecking=no ubuntu@${pubIPsVar[i]} "git clone --branch master https://github.com/yylluu/dumbo.git" &
     i=$(( i+1 ))
     done
    
-   # Update IP addresses to all remote servers 
+   # Update IP addresses to all remote AWS servers 
     rm tmp_hosts.config
     i=0; while [ $i -le $(( N-1 )) ]; do
       echo $i ${priIPsVar[$i]} ${pubIPsVar[$i]} $(( $((200 * $i)) + 10000 )) >> tmp_hosts.config
@@ -79,10 +80,10 @@ It also includes a PoC implementation for Dumbo-2 (Guo et al. CCS'2020)
       i=$(( i+1 ))
     done
     
-    # Start Protocols at all remot servers
+    # Start Protocols at all remote AWS servers
     i=0; while [ $i -le $(( N-1 )) ]; do   ssh -i "/home/your-name/your-key-dir/your-sk.pem" ubuntu@${pubIPsVar[i]} "export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib; cd dumbo; nohup python3 run_socket_node.py --sid 'sidA' --id $i --N $N --f $(( (N-1)/3 )) --B 10000 --K 11 --S 50 --T 2 --P "bdt" --F 1000000 > node-$i.out" &   i=$(( i+1 )); done
  
-    # Download logs from remote servers to your local PC
+    # Download logs from all remote AWS servers to your local PC
     i=0
     while [ $i -le $(( N-1 )) ]
     do
