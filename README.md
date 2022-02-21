@@ -1,6 +1,7 @@
 Proof-of-Concept implementation for Bolt-Dumbo Transformer. 
 The code is forked from the implementation of Honeybadger-BFT protocol.
-It also includes a PoC implementation for Dumbo-2 (Guo et al. CCS'2020)
+The pessimistic fallback path is instantiated by Dumbo-2 (Guo et al. CCS'2020).
+So this codebase also includes a PoC implementation for Dumbo-2 as a by-product.
 
 1. To run the benchmarks at your machine (with Ubuntu 18.84 LTS), first install all dependencies as follows:
     ```
