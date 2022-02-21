@@ -39,7 +39,7 @@ def set_consensus_log(id: int):
         os.mkdir(os.getcwd() + '/log')
     full_path = os.path.realpath(os.getcwd()) + '/log/' + "consensus-node-"+str(id) + ".log"
     file_handler = logging.FileHandler(full_path)
-    file_handler.setFormatter(formatter)  # 可以通过setFormatter指定输出格式
+    file_handler.setFormatter(formatter) 
     logger.addHandler(file_handler)
     return logger
 
