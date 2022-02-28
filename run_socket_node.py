@@ -127,7 +127,7 @@ if __name__ == '__main__':
         net_server.start()
         net_client.start()
 
-        while not client_ready.value and not server_ready.value:
+        while not client_ready.value or not server_ready.value:
             time.sleep(1)
             print("waiting for network ready...")
 
